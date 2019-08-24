@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+        <gradient android:startColor="@color/colorBlackOverlay"
+        android:endColor="@color/colorBlack"
+        android:centerColor="@color/colorGrayL"
+        android:type="linear"
+        android:angle="90"/>
+
+
+    </shape>
+    </item>
+
+<item android:drawable="@drawable/login_transparent">
+
+
+</item>
+
+</layer-list>
+
+<!--<shape android:shape="rectangle">-->
+<!--<gradient android:startColor="@color/colorBlackOverlay"-->
+    <!--android:endColor="@color/colorBlack"-->
+    <!--android:centerColor="@color/colorGrayL"-->
+    <!--android:type="linear"-->
+    <!--android:angle="90"/>-->
+
+<!--&lt;!&ndash;</shape>&ndash;&gt;
+ <shape android:shape="rectangle">-->
+<!--<gradient android:startColor="#BF2D36"-->
+    <!--android:endColor="#A6EC6F66"-->
+    <!--android:centerColor="#71EC6F66"-->
+    <!--android:type="linear"-->
+    <!--android:angle="270"/>-->

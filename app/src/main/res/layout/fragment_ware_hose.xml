@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".warehouse.WareHoseFragment">
+    
+<data>
+    <import type="android.view.View" />
+    <import type="android.text.TextUtils" />
+    <variable
+        name="viewModel"
+        type="itg8.com.stockmanagement.warehouse.mvvm.WareHouseViewModel" />
+
+</data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoryAdapter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="@{viewModel.isProgress?View.GONE:View.VISIBLE}"
+        app:customCategoryAdapter="@{viewModel.genericCategoryAdapter}"
+        />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+               android:visibility="@{viewModel.isProgress?View.VISIBLE:View.GONE}" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/categoryAdapter"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_8sdp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:customProAdapter="@{viewModel.genericProductAdapter}"
+        android:visibility="@{viewModel.isProgress?View.GONE:View.VISIBLE}"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

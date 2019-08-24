@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".home.ReportFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="itg8.com.stockmanagement.home.mvvm.ReportViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/lbl_selectDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:gravity="center"
+                    android:onClick="@{viewModel.onClickedDate}"
+                    android:padding="@dimen/_8sdp"
+                    android:text="Select Date"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/rdGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:onCheckedChanged="@{viewModel::onCheckChanged}"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_selectDate">
+
+                    <RadioButton
+                        android:id="@+id/rd_income"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selection_bg"
+                        android:button="@null"
+                        android:checked="@={viewModel.checkIncome}"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/roboto_light"
+                        android:gravity="center"
+                        android:text="Income"
+                        android:textColor="@drawable/selection_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+
+
+                    <RadioButton
+                        android:id="@+id/rd_stock"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selection_bg"
+                        android:button="@null"
+                        android:checked="@={viewModel.checkStock}"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:text="Stock"
+                        android:textColor="@drawable/selection_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+
+                    <RadioButton
+                        android:id="@+id/rd_dispatched"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selection_bg"
+                        android:button="@null"
+                        android:checked="@={viewModel.checkDispachted }"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:gravity="center"
+                        android:text="Dispatched"
+                        android:textColor="@drawable/selection_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+                </RadioGroup>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdGroup">
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/pieChart"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_height="@dimen/_100sdp" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/card_chart"
+                    app:customAdapter="@{viewModel.genericAdapter}" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+
+</layout>

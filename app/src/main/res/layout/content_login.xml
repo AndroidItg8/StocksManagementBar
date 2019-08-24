@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".login.LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_login"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_login_layer" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_16sdp">
+            <TextView
+                android:id="@+id/lbl_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20sdp"
+                android:text="Login"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:layout_margin="@dimen/_16sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/lbl_login"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp" />
+
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_16sdp"
+
+            android:gravity="center">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputMobileNumberLogin"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/colorWhite"
+                    app:counterTextAppearance="@color/colorWhite"
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    android:textColorHint="@color/colorWhite"
+                    app:boxStrokeWidth="1px"
+                    app:errorTextAppearance="@color/colorRed"
+                    app:hintEnabled="true"
+                    android:hint="Enter Mobile Number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorGray"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputPasswordLogin"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inputMobileNumberLogin"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/colorWhite"
+                    app:counterTextAppearance="@color/colorWhite"
+                    app:errorEnabled="true"
+                    app:hintAnimationEnabled="true"
+                    android:textColorHint="@color/colorWhite"
+                    app:boxStrokeWidth="1px"
+                    app:errorTextAppearance="@color/colorRed"
+                    app:hintEnabled="true"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTintMode="src_over"
+                    android:hint="Enter Password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:inputType="textPassword"
+                        android:lines="1"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorGray"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:rippleColor="@color/colorRed"
+                    app:cornerRadius="@dimen/_25sdp"
+                    app:strokeColor="@color/colorPrimary"
+                    app:strokeWidth="1px"
+                    android:id="@+id/btn_login"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/colorWhite"
+                    android:textAllCaps="true"
+                    android:text="Login"
+                    android:background="@drawable/bg_btn"
+                    android:layout_marginTop="@dimen/_32sdp"
+                    android:layout_below="@+id/inputPasswordLogin"/>
+
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginTop="@dimen/_32sdp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/inputPasswordLogin"/>
+
+
+
+        </RelativeLayout>
+        </RelativeLayout>
+
+
+
+
+
+
+    </FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="rawmodel"
+            type="itg8.com.stockmanagement.home.model.ReportModel" />
+
+        <variable
+            name="model"
+            type="itg8.com.stockmanagement.home.mvvm.ReportItemViewModel" />
+    </data>
+<LinearLayout
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:onClick="@{v->model.onClickedCategory(v,rawmodel)}"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginBottom="@dimen/_4sdp"
+    android:layout_marginStart="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_4sdp"
+        android:textStyle="normal"
+        android:fontFamily="@font/roboto"
+        android:textSize="@dimen/_12sdp"
+        android:minWidth="@dimen/_100sdp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:minHeight="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:maxLines="1"
+        android:id="@+id/txtChip"
+        android:text="@{rawmodel.temp}"
+        android:checked="false"
+        android:clickable="false"
+        android:focusable="false"
+        android:textColor="@drawable/selection_bg"
+        android:background="@drawable/selection_color_adapter"/>
+
+</LinearLayout>
+</layout>
