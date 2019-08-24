@@ -16,10 +16,10 @@ import itg8.com.stockmanagement.common.FragmentSupportBaseObservable;
 import itg8.com.stockmanagement.common.genericRv.GenericAdapter;
 import itg8.com.stockmanagement.home.model.ReportModel;
 
-public class WareHouseViewModel  extends FragmentSupportBaseObservable {
+public class WareHouseViewModel extends FragmentSupportBaseObservable {
 
- public    ObservableBoolean isProgress;
- public ObservableList<ReportModel> list;
+    public ObservableBoolean isProgress;
+    public ObservableList<ReportModel> list;
     public GenericAdapter<ReportModel, CategoryViewModel> genericCategoryAdapter;
     public GenericAdapter<ReportModel, ProductItemViewModel> genericProductAdapter;
 
@@ -38,10 +38,12 @@ public class WareHouseViewModel  extends FragmentSupportBaseObservable {
 
         }
     };
+
     public WareHouseViewModel(Fragment fragment) {
         super(fragment);
-        list= new ObservableArrayList<>();
-        isProgress= new ObservableBoolean(false);
+        list = new ObservableArrayList<>();
+setTempItem();
+        isProgress = new ObservableBoolean(false);
     }
 
     private void generateRvCategoryContent() {
@@ -49,10 +51,11 @@ public class WareHouseViewModel  extends FragmentSupportBaseObservable {
         itemModel.setListener(listner);
         genericCategoryAdapter = new GenericAdapter<>(list, itemModel);
     }
-  private void generateRvProductContent() {
-      ProductItemViewModel  itemModel = new ProductItemViewModel ();
+
+    private void generateRvProductContent() {
+        ProductItemViewModel itemModel = new ProductItemViewModel();
         itemModel.setListener(listenerProduct);
-      genericProductAdapter = new GenericAdapter<>(list, itemModel);
+        genericProductAdapter = new GenericAdapter<>(list, itemModel);
     }
 
 
@@ -64,7 +67,6 @@ public class WareHouseViewModel  extends FragmentSupportBaseObservable {
     }
 
 
-
     @BindingAdapter(value = {"customProAdapter"}, requireAll = false)
     public static void productRecyclerview(RecyclerView recyclerView, GenericAdapter adapter) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
@@ -73,5 +75,13 @@ public class WareHouseViewModel  extends FragmentSupportBaseObservable {
     }
 
 
-
+    public void setTempItem() {
+        for (int i = 0; i < 10; i++) {
+            ReportModel model = new ReportModel();
+            model.setTemp(String.valueOf(i));
+            list.add(model);
+//            genericCategoryAdapter.notifyDataSetChanged();
+//            genericProductAdapter.notifyDataSetChanged();
+        }
+    }
 }

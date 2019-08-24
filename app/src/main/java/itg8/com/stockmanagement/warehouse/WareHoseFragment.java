@@ -4,6 +4,8 @@ package itg8.com.stockmanagement.warehouse;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import itg8.com.stockmanagement.R;
+import itg8.com.stockmanagement.databinding.FragmentWareHoseBinding;
+import itg8.com.stockmanagement.warehouse.mvvm.WareHouseViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +30,7 @@ public class WareHoseFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private FragmentWareHoseBinding binding;
 
 
     public WareHoseFragment() {
@@ -60,10 +65,19 @@ public class WareHoseFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ware_hose, container, false);
+//        return inflater.inflate(R.layout.fragment_ware_hose, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ware_hose, container, false);
+        setUpViewModel();
+  return binding.getRoot();
+    }
+
+    private void setUpViewModel() {
+        WareHouseViewModel model = new WareHouseViewModel(this);
+
+        binding.setViewModel(model);
     }
 
 }

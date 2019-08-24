@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.List;
 
 import itg8.com.stockmanagement.R;
+import itg8.com.stockmanagement.warehouse.WareHoseFragment;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public abstract class BaseActivity extends AppCompatActivity implements
@@ -125,7 +126,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+         startFragment(WareHoseFragment.newInstance("",""));
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

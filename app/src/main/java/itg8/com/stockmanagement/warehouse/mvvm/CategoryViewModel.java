@@ -10,6 +10,9 @@ import itg8.com.stockmanagement.home.model.ReportModel;
 public class CategoryViewModel implements ViewModel {
     private GenericAdapter.OnItemClickListner listner;
 
+    public CategoryViewModel() {
+    }
+
     @Override
     public int layoutId() {
         return R.layout.item_rv_category;
