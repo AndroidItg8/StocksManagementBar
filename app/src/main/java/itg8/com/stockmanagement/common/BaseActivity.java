@@ -18,7 +18,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.List;
 
 import itg8.com.stockmanagement.R;
-import itg8.com.stockmanagement.warehouse.WareHoseFragment;
+import itg8.com.stockmanagement.home.HomeFragment;
+import itg8.com.stockmanagement.restaurants.RestaurantsFragment;
+import itg8.com.stockmanagement.supplier.SupplierFragment;
+import itg8.com.stockmanagement.warehouse.WarehouseFragment;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public abstract class BaseActivity extends AppCompatActivity implements
@@ -47,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     private boolean initBottomMenu(MenuItem menuItem) {
 
 
-        return false;
+        return true;
     }
 
     private boolean initNavigationMenu(MenuItem menuItem) {
@@ -126,12 +129,22 @@ public abstract class BaseActivity extends AppCompatActivity implements
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-         startFragment(WareHoseFragment.newInstance("",""));
-        } else if (id == R.id.nav_gallery) {
+            startFragment(HomeFragment.newInstance("",""));
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_warehouse) {
+            showFab();
+            showNaviagtion();
+            startFragment(WarehouseFragment.newInstance("",""));
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_supplier) {
+            showFab();
+            showNaviagtion();
+            startFragment(SupplierFragment.newInstance("",""));
+
+        } else if (id == R.id.nav_shops) {
+            showFab();
+            showNaviagtion();
+            startFragment(RestaurantsFragment.newInstance("",""));
 
         } else if (id == R.id.nav_share) {
 
@@ -154,15 +167,11 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     }
 
-    public abstract FloatingActionButton getFab();
 
 
-    private void showFab(){
-        getFab().show();
-    }
+    public abstract  void showFab();
+    public abstract void showNaviagtion();
 
-    private void hideFab(){
-        getFab().hide();
-    }
+
 
 }

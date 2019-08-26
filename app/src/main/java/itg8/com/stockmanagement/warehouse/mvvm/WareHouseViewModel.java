@@ -1,7 +1,5 @@
 package itg8.com.stockmanagement.warehouse.mvvm;
 
-import android.util.Log;
-
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableBoolean;
@@ -12,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
+import itg8.com.stockmanagement.MainActivity;
 import itg8.com.stockmanagement.common.FragmentSupportBaseObservable;
 import itg8.com.stockmanagement.common.genericRv.GenericAdapter;
 import itg8.com.stockmanagement.home.model.ReportModel;
+import itg8.com.stockmanagement.warehouse.WarehouseDetailActivity;
 
 public class WareHouseViewModel extends FragmentSupportBaseObservable {
 
@@ -27,13 +27,19 @@ public class WareHouseViewModel extends FragmentSupportBaseObservable {
         @Override
         public void onItemClicked(Object o) {
 
-            genericProductAdapter.notifyDataSetChanged();
+            if((MainActivity)getFragment().getContext()!=null)
+                ((MainActivity)getFragment().getContext()).startCustomActivity(o);
+
+//            genericProductAdapter.notifyDataSetChanged();
         }
     };
 
     public GenericAdapter.OnItemClickListner listenerProduct = new GenericAdapter.OnItemClickListner() {
         @Override
         public void onItemClicked(Object o) {
+
+            if((MainActivity)getFragment().getContext()!=null)
+                ((MainActivity)getFragment().getContext()).startCustomActivity(o);
 
 
         }
@@ -42,8 +48,12 @@ public class WareHouseViewModel extends FragmentSupportBaseObservable {
     public WareHouseViewModel(Fragment fragment) {
         super(fragment);
         list = new ObservableArrayList<>();
-setTempItem();
+        setTempItem();
         isProgress = new ObservableBoolean(false);
+        generateRvCategoryContent();
+        generateRvProductContent();
+
+
     }
 
     private void generateRvCategoryContent() {
@@ -80,8 +90,7 @@ setTempItem();
             ReportModel model = new ReportModel();
             model.setTemp(String.valueOf(i));
             list.add(model);
-//            genericCategoryAdapter.notifyDataSetChanged();
-//            genericProductAdapter.notifyDataSetChanged();
+
         }
     }
 }

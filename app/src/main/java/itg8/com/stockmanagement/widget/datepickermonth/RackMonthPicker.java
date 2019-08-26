@@ -1,4 +1,4 @@
-package itg8.com.widget.datepickermonth;
+package itg8.com.stockmanagement.widget.datepickermonth;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
-import android.os.Build;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -30,8 +29,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import itg8.com.stockmanagement.R;
-import itg8.com.widget.datepickermonth.listener.DateMonthDialogListener;
-import itg8.com.widget.datepickermonth.listener.OnCancelMonthDialogListener;
+import itg8.com.stockmanagement.widget.datepickermonth.listener.DateMonthDialogListener;
+import itg8.com.stockmanagement.widget.datepickermonth.listener.OnCancelMonthDialogListener;
 
 /**
  * Created by kristiawan on 31/12/16.

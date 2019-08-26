@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="model"
             type="itg8.com.stockmanagement.home.mvvm.HomeViewModel" />
@@ -43,26 +45,25 @@
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
+                        android:backgroundTint="@color/colorGray"
                         android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
                         android:minHeight="@dimen/_20sdp"
-                        android:backgroundTint="@color/colorGray"
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="normal"
-                        app:customUserListener="@{model.userItemListener}"
                         app:customEntriesUser="@{model.users}"
-        />
+                        app:customUserListener="@{model.userItemListener}" />
                 </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_main"
-            app:model="@{model}"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        <include
+            layout="@layout/content_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_48sdp"
-            />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:model="@{model}" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -70,9 +71,9 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_gravity="bottom"
             android:background="@color/colorPrimary"
+            android:visibility="@{model.isBottomView?View.VISIBLE:View.GONE}"
             app:itemIconTint="@color/colorWhite"
             app:itemTextColor="@color/colorWhite"
-            android:visibility="gone"
             app:menu="@menu/bottom_navigation_menu" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -80,7 +81,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/_48sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:visibility="@{model.isfab?View.VISIBLE:View.GONE}"
             app:srcCompat="@android:drawable/ic_dialog_email" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

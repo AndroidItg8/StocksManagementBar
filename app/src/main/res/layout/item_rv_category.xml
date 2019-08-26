@@ -23,6 +23,7 @@
     android:onClick="@{v->model.onClickedCategory(v,rawmodel)}"
     android:layout_marginTop="@dimen/_4sdp"
     android:layout_marginBottom="@dimen/_4sdp"
+    android:background="@drawable/selection_color_calender"
     android:layout_marginStart="@dimen/_8sdp"
     android:layout_marginEnd="@dimen/_8sdp">
 
@@ -46,8 +47,8 @@
         android:checked="false"
         android:clickable="false"
         android:focusable="false"
-        android:textColor="@drawable/selection_bg"
-        android:background="@drawable/selection_color_adapter"/>
+        android:textColor="@drawable/selection_color_adapter"
+      />
 
 </LinearLayout>
 </layout>

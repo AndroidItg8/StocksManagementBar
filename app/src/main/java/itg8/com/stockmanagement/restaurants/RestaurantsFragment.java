@@ -1,11 +1,8 @@
-package itg8.com.stockmanagement.home;
+package itg8.com.stockmanagement.restaurants;
 
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,15 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import itg8.com.stockmanagement.R;
-import itg8.com.stockmanagement.databinding.FragmentReportBinding;
-import itg8.com.stockmanagement.home.mvvm.ReportViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ReportFragment#newInstance} factory method to
+ * Use the {@link RestaurantsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ReportFragment extends Fragment {
+public class RestaurantsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,10 +25,9 @@ public class ReportFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private FragmentReportBinding binding;
 
 
-    public ReportFragment() {
+    public RestaurantsFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +37,11 @@ public class ReportFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ReportFragment.
+     * @return A new instance of fragment RestaurantsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ReportFragment newInstance(String param1, String param2) {
-        ReportFragment fragment = new ReportFragment();
+    public static RestaurantsFragment newInstance(String param1, String param2) {
+        RestaurantsFragment fragment = new RestaurantsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,15 +59,10 @@ public class ReportFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull  LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_report, container, false);
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_report, container, false);
-        ReportViewModel model = new ReportViewModel(binding.pieChart, this);
-        binding.setViewModel(model);
-        return binding.getRoot();
+        return inflater.inflate(R.layout.fragment_restaurants, container, false);
     }
 
 }

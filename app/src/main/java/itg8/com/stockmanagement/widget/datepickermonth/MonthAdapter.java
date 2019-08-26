@@ -1,7 +1,6 @@
-package itg8.com.widget.datepickermonth;
+package itg8.com.stockmanagement.widget.datepickermonth;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;

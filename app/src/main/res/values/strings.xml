@@ -17,4 +17,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_warehouse">warehouse</string>
+    <string name="menu_supplier">supplier</string>
+    <string name="menu_shops">shops</string>
+    <string name="menu_stock">stock</string>
+    <string name="menu_dispatched">dispatched</string>
+    <string name="menu_received">Recieved</string>
+    <string name="menu_request">Request</string>
+    <string name="title_activity_ware_house_detail_activity">Warehouse</string>
 </resources>

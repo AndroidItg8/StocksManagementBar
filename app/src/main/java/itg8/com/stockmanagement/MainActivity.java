@@ -1,10 +1,13 @@
 package itg8.com.stockmanagement;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,15 +23,18 @@ import androidx.fragment.app.FragmentManager;
 import itg8.com.stockmanagement.common.BaseActivity;
 
 import itg8.com.stockmanagement.databinding.ActivityMainBinding;
-import itg8.com.stockmanagement.home.ReportFragment;
+import itg8.com.stockmanagement.home.HomeFragment;
 import itg8.com.stockmanagement.home.mvvm.HomeViewModel;
+import itg8.com.stockmanagement.warehouse.WarehouseDetailActivity;
 
 public class MainActivity extends BaseActivity
         implements FragmentManager.OnBackStackChangedListener {
 
     private FloatingActionButton fab;
     private ActivityMainBinding binding;
-    private HomeViewModel model;
+
+
+    public HomeViewModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +44,13 @@ public class MainActivity extends BaseActivity
         Toolbar toolbar = setUpActionBar();
         setUpNavigation(toolbar);
         setViewModel();
-        initMenus(ReportFragment.newInstance("",""));
+        initMenus(HomeFragment.newInstance("", ""));
 
 
     }
 
     private void setViewModel() {
-        model=new HomeViewModel(this );
+        model = new HomeViewModel(this);
         binding.setModel(model);
     }
 
@@ -62,7 +68,7 @@ public class MainActivity extends BaseActivity
 
     private void setUpNavigation(Toolbar toolbar) {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView  navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         BottomNavigationView bottomNavigationItemView = findViewById(R.id.bottom_navigation);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -82,11 +88,6 @@ public class MainActivity extends BaseActivity
         }
     }
 
-    @Override
-    public FloatingActionButton getFab() {
-        return fab;
-    }
-
 
     /**
      * Handle by BackPress
@@ -97,6 +98,22 @@ public class MainActivity extends BaseActivity
 
     }
 
+
+    @Override
+    public void showFab() {
+        model.isfab.set(true);
+    }
+
+    @Override
+    public void showNaviagtion() {
+        model.isBottomView.set(true);
+
+    }
+
+    public void startCustomActivity(Object data){
+        Intent intent = new Intent(this, WarehouseDetailActivity.class);
+        startActivity(intent);
+    }
 
 
 }

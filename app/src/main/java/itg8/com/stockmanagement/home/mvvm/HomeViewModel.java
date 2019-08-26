@@ -6,6 +6,7 @@ import android.widget.Spinner;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableList;
 
 import itg8.com.stockmanagement.common.GenericSpinnerAdapter;
@@ -15,6 +16,8 @@ import itg8.com.stockmanagement.common.SpinnerItemSelect;
 public class HomeViewModel  extends BaseObservable {
     public ObservableList<SpinnerGenericModel> users;
     private Context context;
+    public ObservableBoolean isfab;
+    public ObservableBoolean isBottomView;
     public SpinnerItemSelect.OnItemSelectListener userItemListener = new SpinnerItemSelect.OnItemSelectListener() {
         @Override
         public void onItemSelect(SpinnerGenericModel id) {
@@ -26,12 +29,14 @@ public class HomeViewModel  extends BaseObservable {
     public HomeViewModel(Context context) {
         this.context = context;
         users = new ObservableArrayList<>();
+        isfab= new ObservableBoolean(false);
+        isBottomView= new ObservableBoolean(false);
         createData();
     }
 
     private void createData() {
         for (int i=0; i<9; i++){
-            SpinnerGenericModel model = new SpinnerGenericModel(String.valueOf(i), "users"+String.valueOf(i));
+            SpinnerGenericModel model = new SpinnerGenericModel(String.valueOf(i), "user "+String.valueOf(i));
             users.add(model);
         }
     }

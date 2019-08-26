@@ -16,7 +16,7 @@ public class ProductItemViewModel implements ViewModel {
 
     @Override
     public int layoutId() {
-        return R.layout.item_rv_report_detail;
+        return R.layout.item_rv_product;
     }
 
     @Override
@@ -30,5 +30,6 @@ public class ProductItemViewModel implements ViewModel {
 
     public void itemClicked(View view, ReportModel model){
         Log.d(TAG, "itemClicked: ");
+        listenerProduct.onItemClicked(model);
     }
 }

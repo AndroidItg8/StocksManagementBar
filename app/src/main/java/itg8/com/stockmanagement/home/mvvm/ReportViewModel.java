@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 
-import android.os.Build;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
@@ -46,9 +45,9 @@ import itg8.com.stockmanagement.R;
 import itg8.com.stockmanagement.common.FragmentSupportBaseObservable;
 import itg8.com.stockmanagement.common.genericRv.GenericAdapter;
 import itg8.com.stockmanagement.home.model.ReportModel;
-import itg8.com.widget.datepickermonth.RackMonthPicker;
-import itg8.com.widget.datepickermonth.listener.DateMonthDialogListener;
-import itg8.com.widget.datepickermonth.listener.OnCancelMonthDialogListener;
+import itg8.com.stockmanagement.widget.datepickermonth.RackMonthPicker;
+import itg8.com.stockmanagement.widget.datepickermonth.listener.DateMonthDialogListener;
+import itg8.com.stockmanagement.widget.datepickermonth.listener.OnCancelMonthDialogListener;
 
 public class ReportViewModel extends FragmentSupportBaseObservable implements OnChartValueSelectedListener {
     private static final String TAG = "ReportViewModel";
@@ -69,12 +68,12 @@ public class ReportViewModel extends FragmentSupportBaseObservable implements On
         super((fragment));
         this.mChart = pieChart;
         list=new ObservableArrayList<>();
+        generateTempItem();
         checkIncome = new ObservableBoolean(true);
         checkStock = new ObservableBoolean(false);
         checkDispachted = new ObservableBoolean(false);
         isMonthy = new ObservableBoolean(false);
         parties= new ObservableArrayList<>();
-        generateTempItem();
         genericRv();
         putValueinList();
         initializePieChart();
