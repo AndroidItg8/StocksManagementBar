@@ -3,6 +3,8 @@ package itg8.com.stockmanagement.restaurants;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import itg8.com.stockmanagement.R;
+import itg8.com.stockmanagement.databinding.FragmentRestaurantsBinding;
+import itg8.com.stockmanagement.restaurants.mvvm.RestraurantsViewModel;
+import itg8.com.stockmanagement.warehouse.mvvm.WareHouseViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +30,7 @@ public class RestaurantsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private FragmentRestaurantsBinding binding;
 
 
     public RestaurantsFragment() {
@@ -62,7 +68,18 @@ public class RestaurantsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurants, container, false);
+//        return inflater.inflate(R.layout.fragment_restaurants, container, false);
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_restaurants, container, false);
+        setUpViewModel();
+        return binding.getRoot();
+    }
+
+    private void setUpViewModel() {
+        RestraurantsViewModel model = new RestraurantsViewModel(this, binding.tableLayout);
+        binding.setViewModel(model);
     }
 
 }
+
+

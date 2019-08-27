@@ -21,6 +21,7 @@ import itg8.com.stockmanagement.R;
 import itg8.com.stockmanagement.home.HomeFragment;
 import itg8.com.stockmanagement.restaurants.RestaurantsFragment;
 import itg8.com.stockmanagement.supplier.SupplierFragment;
+import itg8.com.stockmanagement.warehouse.ProductPurchaseFragment;
 import itg8.com.stockmanagement.warehouse.WarehouseFragment;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -137,15 +138,14 @@ public abstract class BaseActivity extends AppCompatActivity implements
             startFragment(WarehouseFragment.newInstance("",""));
 
         } else if (id == R.id.nav_supplier) {
-            showFab();
-            showNaviagtion();
-            startFragment(SupplierFragment.newInstance("",""));
+//            showFab();
+//            showNaviagtion();
+            startFragment(ProductPurchaseFragment.newInstance("",""));
 
         } else if (id == R.id.nav_shops) {
             showFab();
             showNaviagtion();
             startFragment(RestaurantsFragment.newInstance("",""));
-
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

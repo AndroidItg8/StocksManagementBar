@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="rawmodel"
+            type="itg8.com.stockmanagement.home.model.ReportModel" />
+
+        <variable
+            name="model"
+            type="itg8.com.stockmanagement.restaurants.mvvm.RestaurantItemViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{v->model.itemClicked(v,rawmodel)}"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:id="@+id/rlProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp">
+
+
+            <TextView
+                android:id="@+id/lbl_suppliername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_light"
+                android:lines="1"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_toStartOf="@+id/rl_qty"
+                android:layout_below="@+id/lbl_date"
+                android:text="SupplierName[ company Name]"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbl_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_light"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="12-08-2019"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbl_invoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/lbl_date"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:fontFamily="@font/roboto_light"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="invoice no"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:text="Total Amount :"
+                android:textColor="@color/colorGray"
+                android:layout_below="@+id/lbl_suppliername"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="visible"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txtRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_4sdp"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:layout_toEndOf="@+id/lblRate"
+                android:text="Rs 1234567"
+                android:textColor="@color/colorGreen"
+                android:layout_below="@+id/lbl_suppliername"
+                android:textSize="@dimen/_12sdp"
+                android:visibility="visible"
+                android:textStyle="normal" />
+
+            <RelativeLayout
+                android:id="@+id/rl_qty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignStart="@+id/lbl_date"
+                android:layout_alignEnd="@+id/lbl_date"
+                android:layout_below="@+id/lbl_date"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:gravity="end|center_vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:text="1000"
+                    android:id="@+id/lbl_qty"
+                    android:gravity="center"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/colorGray"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_alignStart="@+id/lbl_qty"
+                    android:layout_alignEnd="@+id/lbl_qty"
+                    android:layout_below="@+id/lbl_qty"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lbl_qty"
+                    android:textSize="@dimen/_8sdp"
+                    android:textColor="@color/colorGray"
+                    android:textStyle="normal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:text="Qty" />
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
