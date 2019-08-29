@@ -6,6 +6,10 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
         <variable
             name="viewModel"
             type="itg8.com.stockmanagement.home.mvvm.ReportViewModel" />
@@ -55,6 +59,27 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_selectDate">
+
+                    <RadioButton
+                        android:id="@+id/rd_request"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/selection_bg"
+                        android:button="@null"
+                        android:checked="@={viewModel.checkRequest}"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/roboto_light"
+                        android:gravity="center"
+                        android:text="Request"
+                        android:textColor="@drawable/selection_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
 
                     <RadioButton
                         android:id="@+id/rd_income"
@@ -132,29 +157,222 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rdGroup">
 
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:id="@+id/pieChart"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_marginTop="@dimen/_8sdp"
-                        android:layout_marginBottom="@dimen/_8sdp"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_marginEnd="@dimen/_8sdp"
-                        android:layout_height="@dimen/_100sdp" />
-                </androidx.cardview.widget.CardView>
+                        android:layout_height="wrap_content">
 
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pieChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_100sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_8sdp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pieChart"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:background="@drawable/bg_border"
+                            android:visibility="@{viewModel.isIncome?View.VISIBLE:View.GONE}">
+
+                            <TextView
+                                android:id="@+id/lblTotal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="Total"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:id="@+id/txtTotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBaseline="@+id/lblTotal"
+                                android:layout_alignStart="@+id/txtCardCash"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_toEndOf="@+id/lblTotal"
+                                android:fontFamily="@font/roboto_light"
+                                android:gravity="end"
+                                android:text="Rs 22000"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:id="@+id/view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_below="@+id/txtTotal"
+                                android:layout_marginStart="@dimen/_16sdp"
+                                android:layout_marginEnd="@dimen/_16sdp"
+                                android:background="@color/colorGray" />
+
+                            <TextView
+                                android:id="@+id/lblTotalExpenxes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblTotal"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="Total Expenses"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:id="@+id/txtExpense"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblTotal"
+                                android:layout_alignBaseline="@+id/lblTotalExpenxes"
+                                android:layout_alignStart="@+id/txtCardCash"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_toEndOf="@+id/lblTotalExpenxes"
+                                android:fontFamily="@font/roboto_light"
+                                android:gravity="end"
+                                android:text=" Rs 2000 "
+                                android:textAllCaps="false"
+
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:id="@+id/view2"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_below="@+id/txtExpense"
+                                android:layout_marginStart="@dimen/_16sdp"
+                                android:layout_marginEnd="@dimen/_16sdp"
+                                android:background="@color/colorGray" />
+
+                            <TextView
+                                android:id="@+id/lblCardCash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblTotalExpenxes"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="Total Card Cash"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_10sdp"
+
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:id="@+id/txtCardCash"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblTotalExpenxes"
+                                android:layout_alignBaseline="@+id/lblCardCash"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_toEndOf="@+id/lblCardCash"
+                                android:fontFamily="@font/roboto_light"
+                                android:gravity="end"
+                                android:text=" Rs 2000 "
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:id="@+id/view3"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_below="@+id/txtCardCash"
+                                android:layout_marginStart="@dimen/_16sdp"
+                                android:layout_marginEnd="@dimen/_16sdp"
+                                android:background="@color/colorGray" />
+
+                            <TextView
+                                android:id="@+id/lblCash"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblCardCash"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:fontFamily="@font/roboto_light"
+                                android:text="Total  Cash"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:id="@+id/txtCash"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lblCardCash"
+                                android:layout_alignBaseline="@+id/lblCash"
+                                android:layout_alignStart="@+id/txtCardCash"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_toEndOf="@+id/lblCash"
+                                android:fontFamily="@font/roboto_light"
+                                android:gravity="end"
+                                android:text=" Rs 2000 "
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/_10sdp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_16sdp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/card_chart">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{viewModel.isRequest?View.GONE:View.VISIBLE}" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/card_chart"
-                    app:customAdapter="@{viewModel.genericAdapter}" />
+                    app:customAdapter="@{viewModel.genericAdapter}"
+                    android:visibility="@{viewModel.isRequest?View.VISIBLE:View.GONE}" />
+
+</FrameLayout>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
     </FrameLayout>
+    <!--android:text="@{(@string/Rs).concat(@string/space).concat(@string/value)}"-->
 
 </layout>

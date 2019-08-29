@@ -30,31 +30,47 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_8sdp">
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/_8sdp">-->
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardUseCompatPadding="true">
+                <!--<TextView-->
+                    <!--android:id="@+id/lbl_selectDate"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/bg_border"-->
+                    <!--android:gravity="center"-->
+                    <!--android:onClick="@{viewModel::onClickedDate}"-->
+                    <!--android:padding="@dimen/_8sdp"-->
+                    <!--android:text="Select Date"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--android:textColor="@color/colorWhite"-->
+                    <!--android:textSize="@dimen/_10sdp"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintRight_toRightOf="parent"-->
+                    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp"
-                        android:backgroundTint="@color/colorGray"
-                        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
-                        android:minHeight="@dimen/_20sdp"
-                        android:textSize="@dimen/_10sdp"
-                        android:textStyle="normal"
-                        app:customEntriesUser="@{model.users}"
-                        app:customUserListener="@{model.userItemListener}" />
-                </androidx.cardview.widget.CardView>
+                <!--<androidx.cardview.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:cardPreventCornerOverlap="false"-->
+                    <!--app:cardUseCompatPadding="true">-->
 
-            </RelativeLayout>
+                    <!--<androidx.appcompat.widget.AppCompatSpinner-->
+                        <!--android:id="@+id/spinner"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="@dimen/_40sdp"-->
+                        <!--android:backgroundTint="@color/colorGray"-->
+                        <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
+                        <!--android:minHeight="@dimen/_20sdp"-->
+                        <!--android:textSize="@dimen/_10sdp"-->
+                        <!--android:textStyle="normal"-->
+                        <!--app:customEntriesUser="@{model.users}"-->
+                        <!--app:customUserListener="@{model.userItemListener}" />-->
+                <!--</androidx.cardview.widget.CardView>-->
+
+            <!--</RelativeLayout>-->
         </com.google.android.material.appbar.AppBarLayout>
 
         <include

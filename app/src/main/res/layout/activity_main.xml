@@ -2,13 +2,15 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="model"
             type="itg8.com.stockmanagement.home.mvvm.HomeViewModel" />
+        <variable
+            name="navigation"
+            type="itg8.com.stockmanagement.home.mvvm.UserViewModel" />
     </data>
 <androidx.drawerlayout.widget.DrawerLayout
     android:id="@+id/drawer_layout"

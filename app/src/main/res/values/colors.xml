@@ -6,6 +6,7 @@
     <color name="colorRed">#2A0202</color>
 
     <color name="colorGray">#817F7F</color>
+    <color name="colorGrayLights">#AEEDE4E4</color>
     <color name="colorGrayDark">#1F1E1E</color>
     <color name="colorGrayL">#C20C0C0C</color>
     <color name="colorGrayLight">#F5F2F2</color>

@@ -44,6 +44,8 @@ import java.util.Locale;
 import itg8.com.stockmanagement.R;
 import itg8.com.stockmanagement.common.FragmentSupportBaseObservable;
 import itg8.com.stockmanagement.common.genericRv.GenericAdapter;
+import itg8.com.stockmanagement.home.adapter.ExpandableRecyclerView;
+import itg8.com.stockmanagement.home.adapter.ProductAdapter;
 import itg8.com.stockmanagement.home.model.ReportModel;
 import itg8.com.stockmanagement.widget.datepickermonth.RackMonthPicker;
 import itg8.com.stockmanagement.widget.datepickermonth.listener.DateMonthDialogListener;
@@ -54,22 +56,31 @@ public class ReportViewModel extends FragmentSupportBaseObservable implements On
 
 
     public ObservableBoolean checkIncome;
+    public ObservableBoolean isRequest;
+    public ObservableBoolean checkRequest;
     public ObservableBoolean checkStock;
     public ObservableBoolean checkDispachted;
+    public ObservableBoolean isIncome;
     public ObservableBoolean isMonthy;
     public ObservableList<ReportModel> list;
     private PieChart mChart;
+    private RecyclerView recyclerView;
     private ObservableArrayList<String> parties;
     private DatePickerDialog datePickerDialog;
     public GenericAdapter<ReportModel, ReportItemViewModel> genericAdapter;
+    private ProductAdapter adapter;
 
 
-    public ReportViewModel(PieChart pieChart, Fragment fragment) {
+    public ReportViewModel(PieChart pieChart, RecyclerView recyclerView, Fragment fragment) {
         super((fragment));
         this.mChart = pieChart;
+        this.recyclerView = recyclerView;
         list=new ObservableArrayList<>();
         generateTempItem();
-        checkIncome = new ObservableBoolean(true);
+        checkIncome = new ObservableBoolean(false);
+        isRequest = new ObservableBoolean(true);
+        isIncome = new ObservableBoolean(false);
+        checkRequest = new ObservableBoolean(true);
         checkStock = new ObservableBoolean(false);
         checkDispachted = new ObservableBoolean(false);
         isMonthy = new ObservableBoolean(false);
@@ -77,8 +88,18 @@ public class ReportViewModel extends FragmentSupportBaseObservable implements On
         genericRv();
         putValueinList();
         initializePieChart();
+     //   setRecyclerView();
 
 
+    }
+
+    private void setRecyclerView() {
+        adapter = new ProductAdapter(getFragment().getContext());
+        adapter.setMode(ExpandableRecyclerView.MODE_ACCORDION);
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setAdapter(adapter);
+        adapter.collapseAll();
     }
 
     private void generateTempItem() {
@@ -259,11 +280,13 @@ public class ReportViewModel extends FragmentSupportBaseObservable implements On
                 } else if (which == 1) {
                     isMonthy.set(true);
                     openMonthlyDateDialogue(view);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+  //                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //                        datePickerDialog= new DatePickerDialog(view.getContext());
 //                        datePickerDialog.getDatePicker().getTouchables().get(0).performClick();
 //                        datePickerDialog.show();
 //                    }
+
+
 
 
                 }
@@ -308,24 +331,43 @@ public class ReportViewModel extends FragmentSupportBaseObservable implements On
         int rbtnId = group.getCheckedRadioButtonId();
         switch (rbtnId) {
             case R.id.rd_dispatched:
-                setComplete(checkDispachted, checkIncome, checkStock);
+
+                setViewVisibility(false,false);
+                setComplete(checkDispachted, checkIncome, checkStock,checkRequest);
 
                 break;
             case R.id.rd_income:
-                setComplete(checkIncome, checkStock, checkDispachted);
+                setViewVisibility(false,true);
+
+                setComplete(checkIncome, checkStock, checkDispachted,checkRequest);
 
                 break;
 
             case R.id.rd_stock:
-                setComplete(checkStock, checkDispachted, checkIncome);
+                setViewVisibility(false,false);
+
+                setComplete(checkStock, checkDispachted, checkIncome,checkRequest);
+                break;
+
+                case R.id.rd_request:
+                    setViewVisibility(true,false);
+
+                    setComplete(checkRequest,checkStock, checkDispachted, checkIncome);
                 break;
         }
     }
 
-    private void setComplete(ObservableBoolean checked, ObservableBoolean unchecked, ObservableBoolean uncheckeds) {
+    private void setViewVisibility(Boolean isTrue, Boolean isFalse) {
+        this.isRequest.set(isTrue);
+        this.isIncome.set(isFalse);
+
+    }
+
+    private void setComplete(ObservableBoolean checked, ObservableBoolean unchecked, ObservableBoolean uncheckeds, ObservableBoolean checkRequest) {
         checked.set(true);
         unchecked.set(false);
         uncheckeds.set(false);
+        checkRequest.set(false);
     }
 
     private SpannableString generateCenterSpannableText() {

@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
 //        return inflater.inflate(R.layout.fragment_report, container, false);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_report, container, false);
-        ReportViewModel model = new ReportViewModel(binding.pieChart, this);
+        ReportViewModel model = new ReportViewModel(binding.pieChart, binding.recyclerView,this);
         binding.setViewModel(model);
         return binding.getRoot();
     }
